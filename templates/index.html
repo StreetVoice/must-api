@@ -1,1 +1,29 @@
-hello
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+    <h1>MUST API</h1>
+    <h3>參數說明:</h3>
+    <ul>
+        <li>work_title: 歌曲名稱 (一定得輸入)</li>
+        <li>work_ip: 作詞人或作曲人</li>
+        <li>work_title_exact: 是否精準比對歌曲名稱 (Y or N)</li>
+        <li>work_ip_exact: 是否精準比對作詞作曲人 (Y or N)</li>
+    </ul>
+    <h3>範例 1:</h3>
+    <p>
+        http://must-api.herokuapp.com/api/?work_title=時髦
+    </p>
+    <p>
+        這樣會找出多筆"時髦"歌名的資料
+    </p>
+    <h3>範例 2:</h3>
+    <p>
+        http://must-api.herokuapp.com/api/?work_title=時髦&amp;work_title_exact=Y
+    </p>
+    <p>
+        這樣會找出一筆完全符合"時髦"歌名的資料
+    </p>
+</body>
+</html>
