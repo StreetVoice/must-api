@@ -1,8 +1,4 @@
-must-api
+MÜST API Interface
 ========
-
-MUST API Interface
-
-
 
 [http://must-api.herokuapp.com/](http://must-api.herokuapp.com/)
