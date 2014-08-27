@@ -28,18 +28,21 @@ def query(work_title, work_ip='', work_title_exact='N', work_ip_exact='N'):
     datas = []
     for idx, item in enumerate(tables):
         table = pq(item)
-        name = table('tr:eq(1) td:eq(1)').text()
-        language = table('tr:eq(1) td:eq(2)').text()
+        full_title = table('tr:eq(1) td:eq(1)').text()
+        language = table('tr:eq(1) td:eq(3)').text()
         lyricists = table('tr:eq(3) td:eq(1)').text()
         composers = table('tr:eq(4) td:eq(1)').text()
         rights_lyricists = table('tr:eq(6) td:eq(1)').text()
         rights_composers = table('tr:eq(7) td:eq(1)').text()
 
-        if name == u'輸入曲目名稱有錯誤，請重新輸入正確曲目名稱再查詢。':
+        if full_title == u'輸入曲目名稱有錯誤，請重新輸入正確曲目名稱再查詢。':
             return {}
 
+        title, title_spell = full_title.split(' ', 1)[1].split('/', 1)
+
         data = {
-            'name': name,
+            'title': title,
+            'title_spell': title_spell,
             'langauge': language,
             'lyricists': lyricists,
             'composers': composers,
