@@ -14,8 +14,9 @@ def index():
 @app.route('/api/')
 def api():
     work_title = request.args.get('name', '')
+    work_ip = request.args.get('ip', '')
 
-    data = query(work_title)
+    data = query(work_title, work_ip)
 
     return jsonify(**data)
 
