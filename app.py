@@ -13,10 +13,12 @@ def index():
 
 @app.route('/api/')
 def api():
-    work_title = request.args.get('name', '')
-    work_ip = request.args.get('ip', '')
+    work_title = request.args.get('work_title', '')
+    work_ip = request.args.get('work_ip', '')
+    work_title_exact = request.args.get('work_title_exact', 'N')
+    work_ip_exact = request.args.get('work_ip_exact', 'N')
 
-    data = query(work_title, work_ip)
+    data = query(work_title, work_ip, work_title_exact, work_ip_exact)
 
     return jsonify(**data)
 

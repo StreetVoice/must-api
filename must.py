@@ -6,17 +6,15 @@ import requests
 from pyquery import PyQuery as pq
 
 
-def query(work_title, work_ip=None):
+def query(work_title, work_ip='', work_title_exact='N', work_ip_exact='N'):
     url = 'http://www.must.org.tw/left_fun/search-list.asp?cpage='
 
     params = {
         'work_title': work_title, 
-        'work_title_exact': 'Y',
-        'work_ip_exact': 'N',
+        'work_ip': work_ip,
+        'work_title_exact': work_title_exact,
+        'work_ip_exact': work_ip_exact,
     }
-
-    if work_ip:
-        params['work_ip'] = work_ip
 
     r = requests.post(url, params)
 
