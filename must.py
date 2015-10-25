@@ -38,9 +38,19 @@ def query(work_title, work_ip='', work_title_exact='N', work_ip_exact='N'):
         if full_title == u'輸入曲目名稱有錯誤，請重新輸入正確曲目名稱再查詢。':
             return {}
 
-        title, title_spell = full_title.split(' ', 1)[1].split('/', 1)
+        try:
+            track_no, title = full_title.split(' ', 1)
+        except ValueError:
+            title = full_title
+            track_no = ''
+
+        try:
+            title, title_spell = title.split('/', 1)
+        except ValueError:
+            title_spell = ''
 
         data = {
+            'track_no': track_no,
             'title': title,
             'title_spell': title_spell,
             'langauge': language,
